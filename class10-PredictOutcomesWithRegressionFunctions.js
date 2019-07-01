@@ -19,3 +19,5 @@ function calcNeighbors(results, {weekend, temperature}) {
 const[first, second, ...rest] = calcNeighbors(prevResults, {weekend: 1, temperature: 2});
 
 console.log((first.pies + second.pies)/2);
+
+// My thought? I cannot see that I will ever use this, honestly.....
