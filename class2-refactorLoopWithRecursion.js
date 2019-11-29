@@ -11,12 +11,14 @@
 // ----------------------------------------------------------
 
 // // When dealing with recursion, it is important to know that we need to have
-// // At least one base case and one recursion case
-// // And recursion is not necessary good for performance. Loop is better for performance but recursion is easier to understand
+// // At least one base case and one recursion case.
+// // e.g. What are you trying to get for this recusive function, we want to create a loop that counter 0 to 10.
+// //      so 10 is our goal so it is our base case.
+// // And recursion is not necessary good for performance. Loop sometimes is better for performance but recursion is easier to understand
 // function counter(n) {
 //     console.log(n);
 //
-//     // Without this it will go into infinite loop
+//     // Without this it will go into infinite loop.
 //     if (n===10) {
 //         return;
 //     }
