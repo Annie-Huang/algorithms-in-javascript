@@ -36,19 +36,53 @@ function fillInGrid(grid) {
         for(let col in constraint) {
             let {value, weight} = items[row];
             console.log('value=', value, ' weight=', weight);
+
+            // Step1: Use for the first time to fill all column, after the first time, it will show:
+            // [
+            //    [ 1500, 1500, 1500, 1500 ],
+            //    [ 0, 0, 0, 0 ],
+            //    [ 0, 0, 0, 0 ],
+            //    [ 0, 0, 0, 0 ]
+            // ]
             if(grid[row-1] === undefined) {
                 grid[row][col] = value;
                 continue; // continue the forloop, skip the rest...
             }
+
+
+            // Step2 Use for the first row to fill through the second row, after it run with the first step, it will show:
+            // [
+            //    [ 1500, 1500, 1500, 1500 ],
+            //    [ 1500, 1500, 1500, 0 ],
+            //    [ 0, 0, 0, 0 ],
+            //    [ 0, 0, 0, 0 ]
+            // ]
             let prevRowSameCol = grid[row-1][col];
             if(weight > constraint[col]) {
                 grid[row][col] = prevRowSameCol;
                 continue;
             }
+
+            // Step3 after it run with the 1st and 2nd step, it will show:
+            // [
+            //    [ 1500, 1500, 1500, 1500 ],
+            //    [ 1500, 1500, 1500, 3000 ],
+            //    [ 1500, 1500, 2000, 0 ],
+            //    [ 0, 0, 0, 0 ]
+            // ]
             if(weight === constraint[col]) {
                 grid[row][col] = prevRowSameCol > value ? prevRowSameCol : value;
-                continue
+                continue;
             }
+
+
+            // Step4 after it run with the 1st and 2nd and 3rd step, it will show:
+            // [
+            //    [ 1500, 1500, 1500, 1500 ],
+            //    [ 1500, 1500, 1500, 3000 ],
+            //    [ 1500, 1500, 2000, 3500 ],
+            //    [ 0, 0, 0, 0 ]
+            // ]
             let diff = constraint[col-1] - weight;
             console.log('constraint[col-1]=', constraint[col-1], ' weight=', weight, ' diff=', diff);
             console.log('value=', value, ' grid[row-1][diff]=', grid[row-1][diff]);
@@ -67,7 +101,7 @@ console.log(fillInGrid(matrix));
 // - No. At every iteration, we're restoring the current max value. The value can never get worse than it was before.
 // Can we change the order of items?
 // - Each column row would be different, except for that last row, which shows us the max. Remember, we need to go back and iron out that first item logic.
-// Dynamic program only work if each subproblem doesn't not depend on each other.
+// Dynamic program only work if each sub-problem doesn't not depend on each sub-problems.
 // Big O notation? O(2^n)
 
 // My thought? I cannot see that I will ever use this, honestly.....
