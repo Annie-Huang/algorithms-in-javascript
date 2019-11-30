@@ -25,6 +25,10 @@ function selectionSort(list) {
         newList.push(list[lrgItem]); // push will put at the end of the array.
         list.splice(lrgItem, 1);
 
+        console.log('newList=', newList);
+        console.log('list=', list);
+        console.log('---------------------------')
+
         // splice() changes the original array whereas slice() doesn't
         // var array=[1,2,3,4,5];
         // console.log(array.splice(2));
@@ -37,7 +41,7 @@ function selectionSort(list) {
 
 console.log(selectionSort(itemsToSort));
 
-// O(n) because of the while loop in selectionSort.
+// O(n) because of the while loop in selectionSort. And O(n) because of the for loop in findLargestValue.
 // O(n*n) or O(n^2) when you combine the while loop and for each in selectionSort and findLargestValue
 
 // quick sort and merge sort is more efficient.
