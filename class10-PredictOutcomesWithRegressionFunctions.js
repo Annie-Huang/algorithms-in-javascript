@@ -1,3 +1,6 @@
+// If it was a weekend, I put the number one. If not, it's a zero.
+// The smaller the temperature, the colder it was that day, and the total number of pies I sold.
+
 const prevResults = [
     { weekend: 0, temperature: 1, pies: 100 },
     { weekend: 0, temperature: 2, pies: 150 },
